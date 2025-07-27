@@ -38,54 +38,55 @@
 
 
 
-// #include <iostream>
-// #include <vector>
-// using namespace std;
+#include <iostream>
+#include <vector>
+using namespace std;
 
-// void merge(vector<int> &arr, int st, int mid, int end){
-//     int i = st, j = mid+1;
-//     vector<int> temp;
-//     while( i <= mid && j <= end){
-//         if(arr[i] < arr[j]){
-//             temp.push_back(arr[i]);
-//             i++;
-//         }else{
-//             temp.push_back(arr[j]);
-//             j++;
-//         }
-//     }
+void merge(vector<int> &arr, int st, int mid, int end){
+    int i = st, j = mid+1;
+    vector<int> temp;
+    while( i <= mid && j <= end){
+        if(arr[i] < arr[j]){
+            temp.push_back(arr[i]);
+            i++;
+        }else{
+            temp.push_back(arr[j]);
+            j++;
+        }
+    }
 
-//     while(i <= mid){
-//         temp.push_back(arr[i]);
-//         i++;
-//     }
+    while(i <= mid){
+        temp.push_back(arr[i]);
+        i++;
+    }
 
-//     while(j <= end){
-//         temp.push_back(arr[j]);
-//         j++;
-//     }
+    while(j <= end){
+        temp.push_back(arr[j]);
+        j++;
+    }
 
-//     for(int i = 0; i < temp.size(); i++){
-//         arr[st+i] = temp[i];
-//     }
-// }
+    for(int i = 0; i < temp.size(); i++){
+        arr[st+i] = temp[i];
+    }
+}
 
-// void mergesort(vector<int> &arr, int st, int end){
-//     if(st<end){
-//         int mid = st + (end-st)/2;
-//         mergesort(arr, st, mid); //left
-//         mergesort(arr, mid+1, end);
-//         merge(arr, st, mid, end);
-//     }
+void mergesort(vector<int> &arr, int st, int end){
+    if(st<end){
+        int mid = st + (end-st)/2;
+        mergesort(arr, st, mid); //left
+        mergesort(arr, mid+1, end);
+        merge(arr, st, mid, end);
+    }
 
-// }
+}
 
-// int main(){
-//     vector<int> arr = {22,23,56,34,1,23,34,45,45,45,65};
-//     mergesort(arr, 0, arr.size()-1);
+int main(){
+    vector<int> arr = {7,5,2,4,1,6,3,0};
 
-//     for(int val : arr){
-//         cout << val << " ";
-//     }
-//     return 0;
-// }
+    mergesort(arr, 0, arr.size()-1);
+   
+    for(int val : arr){
+        cout << val << " ";
+    }
+    return 0;
+}

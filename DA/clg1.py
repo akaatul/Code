@@ -1,9 +1,5 @@
 import pandas as pd
-data = {
-    'Name' : ['Atul', 'kumar', 'Gupta'],
-    'Age' : [17,28.0,19],
-    'Score' : [45,76,99]
-}
-
-df = pd.DataFrame(data)
-print(df.info())
+a = pd.read_excel(r"D:\DSA\Code\DA\Datasets\tb_Stu_G1.xlsx")
+# b = pd.DataFrame(a)
+df_drop_cols = a.fillna(0)
+print(df_drop_cols)
